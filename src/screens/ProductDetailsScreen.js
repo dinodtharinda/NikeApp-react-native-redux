@@ -9,6 +9,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 import products from "../data/products";
+import Button from "../components/Button";
 
 const ProductDetailsScreen = () => {
   const product = products[0];
@@ -16,13 +17,14 @@ const ProductDetailsScreen = () => {
   const { width } = useWindowDimensions();
 
   const addToCart = () => {
-    console.warn("add to cart");
+    console.log("add to cart");
   };
 
   return (
-    <View>
+    <>
       <ScrollView>
         <FlatList
+        
           data={product.images}
           renderItem={({ item }) => (
             <Image
@@ -40,16 +42,10 @@ const ProductDetailsScreen = () => {
           <Text style={styles.description}>{product.description}</Text>
         </View>
       </ScrollView>
-      <View style={styles.buttonOuterContainer}>
-        <Pressable
-          onPress={addToCart}
-          android_ripple={{ color: "grey" }}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>Add to cart</Text>
-        </Pressable>
+      <View style={styles.button}>
+        <Button onPress={addToCart} title="Add to cart" />
       </View>
-    </View>
+    </>
   );
 };
 
@@ -71,21 +67,10 @@ const styles = StyleSheet.create({
     fontWeight: "300",
     textAlign: "justify",
   },
-  buttonOuterContainer: {
+  button: {
+    width: "100%",
     position: "absolute",
     bottom: 30,
-    width: "90%",
-    alignSelf: "center",
-    borderRadius: 100,
-    overflow: "hidden",
-  },
-  button: {
-    backgroundColor: "black",
-    padding: 20,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "white",
   },
 });
 
