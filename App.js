@@ -2,11 +2,13 @@ import { StatusBar } from "expo-status-bar";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import products from "./src/data/products";
 import ProductsScreen from "./src/screens/ProductScreen";
+import ProductDetailsScreen from "./src/screens/ProductDetailsScreen";
 
 export default function App() {
   return (
     <View style={styles.container}>
-     <ProductsScreen />
+     {/* <ProductsScreen /> */}
+     <ProductDetailsScreen />
       <StatusBar style="auto" />
     </View>
   );
@@ -16,15 +18,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
-  image: {
-    width: "100%",
-    aspectRatio: 1,
-  },
-  itemContainer:{
-    width:'50%',
-    padding:1
-  }
+
 });
