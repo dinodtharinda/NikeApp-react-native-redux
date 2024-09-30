@@ -11,13 +11,15 @@ import {
 import products from "../data/products";
 import Button from "../components/Button";
 
-const ProductDetailsScreen = () => {
-  const product = products[0];
+const ProductDetailsScreen = ({navigation,route}) => {
+  const productId = route.params.productId;
+  const product = products.find(product => product.id === productId);
+  
 
   const { width } = useWindowDimensions();
 
   const addToCart = () => {
-    console.log("add to cart");
+   navigation.navigate('Shopping Cart')
   };
 
   return (
