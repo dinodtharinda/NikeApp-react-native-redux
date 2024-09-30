@@ -10,16 +10,19 @@ import {
 } from "react-native";
 import products from "../data/products";
 import Button from "../components/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { cartSlice } from "../store/cartSlice";
 
-const ProductDetailsScreen = ({navigation,route}) => {
+const ProductDetailsScreen = ({ navigation, route }) => {
+  const product = useSelector((state) => state.products.selectedProduct);
 
-  const product = useSelector((state) => state.products.selectedProduct)
-  
   const { width } = useWindowDimensions();
 
+  const dispatch = useDispatch();
+
   const addToCart = () => {
-   navigation.goBack();
+    dispatch(cartSlice.actions.addCartItem({ product }));
+    navigation.goBack();
   };
 
   return (

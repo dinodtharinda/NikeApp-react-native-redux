@@ -13,7 +13,7 @@ export const productsSlice = createSlice({
     setSelectedProduct: (state, action) => {
       const productId = action.payload;
       state.selectedProduct = state.products.find((p) => p.id === productId);
-      console.log(state.selectedProduct)
+    //   console.log(state.selectedProduct)
     },
   },
 });
