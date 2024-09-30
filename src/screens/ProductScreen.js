@@ -1,18 +1,34 @@
 import { FlatList, Image, Pressable, StyleSheet, View } from "react-native";
-import products from "../data/products";
+import { useDispatch, useSelector } from "react-redux";
+import { productsSlice } from "../store/productsSlice";
+
+/* 
+state.prod.products
+state ==> index
+prod is name of the product attribute. that assign to product slice
+products is products  in the product slice. It could be inital state
+*/
 
 const ProductsScreen = ({ navigation }) => {
-  const viewProductHandler = (itemData) => {
-    console.log(itemData)
-    navigation.navigate("Product Details", {
-      productId: itemData.id,
-    });
+  const products = useSelector((state) => state.products.products);
+
+  const dispatch = useDispatch();
+
+  const viewProductHandler = (item) => {
+    //update selected product
+    dispatch(productsSlice.actions.setSelectedProduct(item.id));
+
+    navigation.navigate("Product Details");
   };
   return (
     <FlatList
       data={products}
       renderItem={({ item }) => (
-        <Pressable style={styles.itemContainer} onPress={viewProductHandler.bind(this,item)}>
+        <Pressable
+          android_ripple={{ color: "grey" }}
+          style={styles.itemContainer}
+          onPress={viewProductHandler.bind(this, item)}
+        >
           <Image source={{ uri: item.image }} style={styles.image} />
         </Pressable>
       )}

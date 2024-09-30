@@ -10,23 +10,22 @@ import {
 } from "react-native";
 import products from "../data/products";
 import Button from "../components/Button";
+import { useSelector } from "react-redux";
 
 const ProductDetailsScreen = ({navigation,route}) => {
-  const productId = route.params.productId;
-  const product = products.find(product => product.id === productId);
-  
 
+  const product = useSelector((state) => state.products.selectedProduct)
+  
   const { width } = useWindowDimensions();
 
   const addToCart = () => {
-   navigation.navigate('Shopping Cart')
+   navigation.goBack();
   };
 
   return (
     <>
       <ScrollView>
         <FlatList
-        
           data={product.images}
           renderItem={({ item }) => (
             <Image
