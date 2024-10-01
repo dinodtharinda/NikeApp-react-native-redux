@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Redux-react-native",
+    "name": "Nike App",
     "slug": "Redux-react-native",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,10 +18,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dinod.nikeapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f8849f76-c179-4760-ac9e-85f9bc7e9cf1"
+      }
     }
   }
 }
